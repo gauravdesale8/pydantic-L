@@ -1,0 +1,32 @@
+from pydantic import BaseModel
+
+class Address(BaseModel):
+
+    city:str
+    state:str
+    pin: str
+    
+
+class Patient(BaseModel):
+
+    name: str
+    age: str
+    gender: str
+    address: Address
+
+
+address_dict = {"city":"Mumbai","state":"Maharashtra","pin":"400001"}
+
+address1 = Address(**address_dict)   #unpacking of dict
+
+patient_dict = {"name":"Ashris","age":"30","gender":"male","address":address1}
+
+patient1 = Patient(**patient_dict)
+
+print(patient1)
+print(patient1.name)
+print(patient1.address.city)
+print(patient1.address.pin)
+
+
+
